@@ -2,15 +2,19 @@
 {
     class Tabuleiro
     {
-        public int linhas { get; set; }
-        public int colunas { get; set; }
+        public int Linhas { get; set; }
+        public int Colunas { get; set; }
         private Peca[,] pecas;
 
-        public Tabuleiro(int linha, int colunas)
+        public Tabuleiro(int linhas, int colunas)
         {
-            this.linhas = linha;
-            this.colunas = colunas;
+            Linhas = linhas;
+            Colunas = colunas;
             pecas = new Peca[linhas, colunas];
+        }
+        public Peca peca(int linha, int coluna)
+        {
+            return pecas[linha, coluna];
         }
     }
 }
