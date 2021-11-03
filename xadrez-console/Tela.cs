@@ -8,48 +8,48 @@ namespace xadrez_console
     {
         public static void imprimirTabuleiro(Tabuleiro tab)
         {
-            CorReferenciadores referenciador = new CorReferenciadores();
-  
-            for (referenciador.I = 0; referenciador.I < tab.Linhas; referenciador.I++)
+           
+            CorReferenciadores corRef = new CorReferenciadores();
+
+            for (corRef.I = 0; corRef.I < tab.Linhas; corRef.I++)
             {
-                
-                referenciador.imprimirNumeroReferenciador();
+                corRef.imprimirNumeroReferenciador();
 
                 for (int j = 0; j < tab.Colunas; j++)
                 {
-                    imprimirPeca(tab.peca(referenciador.I, j));
+                    imprimirPeca(tab.peca(corRef.I, j));
                 }
                 Console.WriteLine();
             }
-            referenciador.imprimirLetrasReferenciadores();
+            corRef.imprimirLetrasReferenciadores();
         }
 
         public static void imprimirTabuleiro(Tabuleiro tab, bool[,] posicoesPossiveis)
         {
-            CorReferenciadores referenciador = new CorReferenciadores();
+            CorReferenciadores corRef = new CorReferenciadores();
 
-            for (referenciador.I = 0; referenciador.I < tab.Linhas; referenciador.I++)
+            for (corRef.I = 0; corRef.I < tab.Linhas; corRef.I++)
             {
-                referenciador.imprimirNumeroReferenciador();
+                corRef.imprimirNumeroReferenciador();
 
                 for (int j = 0; j < tab.Colunas; j++)
                 {
-                    if (posicoesPossiveis[referenciador.I, j])
+                    if (posicoesPossiveis[corRef.I, j])
                     {
-                        Console.BackgroundColor = referenciador.FundoAlterado;
+                        Console.BackgroundColor = corRef.FundoAlterado;
                     }
                     else
                     {
-                        Console.BackgroundColor = referenciador.FundoOriginal;
+                        Console.BackgroundColor = corRef.FundoOriginal;
                     }
-                    imprimirPeca(tab.peca(referenciador.I, j));
-                    Console.BackgroundColor = referenciador.FundoOriginal;
+                    imprimirPeca(tab.peca(corRef.I, j));
+                    Console.BackgroundColor = corRef.FundoOriginal;
                 }
                 Console.WriteLine();
             }
 
-            referenciador.imprimirLetrasReferenciadores();
-            Console.BackgroundColor = referenciador.FundoOriginal;
+            corRef.imprimirLetrasReferenciadores();
+            Console.BackgroundColor = corRef.FundoOriginal;
         }
 
         public static PosicaoXadrez lerPosicaoXadrez()
