@@ -8,65 +8,48 @@ namespace xadrez_console
     {
         public static void imprimirTabuleiro(Tabuleiro tab)
         {
-            int numeroReferenciador = 8;
-            string barraReferenciador = "| ";
-            string letrasReferenciadores = "   A B C D E F G H";
-
-            for (int i = 0; i < tab.Linhas; i++)
+            CorReferenciadores referenciador = new CorReferenciadores();
+  
+            for (referenciador.I = 0; referenciador.I < tab.Linhas; referenciador.I++)
             {
-                ConsoleColor auxiliar = Console.ForegroundColor;
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.Write(numeroReferenciador - i + barraReferenciador);
-                Console.ForegroundColor = auxiliar;
-       
+                
+                referenciador.imprimirNumeroReferenciador();
+
                 for (int j = 0; j < tab.Colunas; j++)
                 {
-                    imprimirPeca(tab.peca(i, j));
+                    imprimirPeca(tab.peca(referenciador.I, j));
                 }
                 Console.WriteLine();
             }
-            ConsoleColor aux = Console.ForegroundColor;
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write(" -----------------\n" + letrasReferenciadores);
-            Console.ForegroundColor = aux;
+            referenciador.imprimirLetrasReferenciadores();
         }
 
         public static void imprimirTabuleiro(Tabuleiro tab, bool[,] posicoesPossiveis)
         {
-            ConsoleColor fundoOriginal = Console.BackgroundColor;
-            ConsoleColor fundoAlterado = ConsoleColor.DarkGray;
-            int numeroReferenciador = 8;
-            string barraReferenciador = "| ";
-            string letrasReferenciadores = "   A B C D E F G H";
+            CorReferenciadores referenciador = new CorReferenciadores();
 
-            for (int i = 0; i < tab.Linhas; i++)
+            for (referenciador.I = 0; referenciador.I < tab.Linhas; referenciador.I++)
             {
-                ConsoleColor auxiliar = Console.ForegroundColor;
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.Write(numeroReferenciador - i + barraReferenciador);
-                Console.ForegroundColor = auxiliar;
+                referenciador.imprimirNumeroReferenciador();
 
                 for (int j = 0; j < tab.Colunas; j++)
                 {
-                    if (posicoesPossiveis[i, j])
+                    if (posicoesPossiveis[referenciador.I, j])
                     {
-                        Console.BackgroundColor = fundoAlterado;
+                        Console.BackgroundColor = referenciador.FundoAlterado;
                     }
                     else
                     {
-                        Console.BackgroundColor = fundoOriginal;
+                        Console.BackgroundColor = referenciador.FundoOriginal;
                     }
-                    imprimirPeca(tab.peca(i, j));
-                    Console.BackgroundColor = fundoOriginal;
+                    imprimirPeca(tab.peca(referenciador.I, j));
+                    Console.BackgroundColor = referenciador.FundoOriginal;
                 }
                 Console.WriteLine();
             }
-            
-            ConsoleColor aux = Console.ForegroundColor;
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write(" -----------------\n" + letrasReferenciadores);
-            Console.ForegroundColor = aux;
-            Console.BackgroundColor = fundoOriginal;
+
+            referenciador.imprimirLetrasReferenciadores();
+            Console.BackgroundColor = referenciador.FundoOriginal;
         }
 
         public static PosicaoXadrez lerPosicaoXadrez()
