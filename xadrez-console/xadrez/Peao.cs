@@ -82,8 +82,8 @@ namespace xadrez
                     mat[pos.Linha, pos.Coluna] = true;
                 }
                 pos.definirValores(Posicao.Linha + 2, Posicao.Coluna);
-                //Posicao p2 = new Posicao(Posicao.Linha + 1, Posicao.Coluna);
-                if (Tab.posicaoValida(pos) && livre(pos) /*&& Tab.posicaoValida(pos)*/ && livre(pos) && QteMovimentos == 0)
+                
+                if (Tab.posicaoValida(pos) && livre(pos) && livre(pos) && QteMovimentos == 0)
                 {
                     mat[pos.Linha, pos.Coluna] = true;
                 }
